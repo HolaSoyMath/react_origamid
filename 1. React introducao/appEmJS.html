@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Carregar React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Carregar Babel, transforma o HTML em CreateElement do React -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="app-javascript">
+      <p>Total: <span id="total"></span></p>
+      <p>Preço: R$ <span id="preco"></span></p>
+      <button id="button">Comprar</button>
+    </div>
+
+    <script type="application/javascript">
+      // Setar variáveis
+      const total = document.getElementById('total');
+      const preco = document.getElementById('preco');
+      const button = document.getElementById('button');
+
+      // Setar valor inicial do contador
+      let contador = 1;
+
+      // Função apra atualizar os valores no DOM
+      function atualizarValores(contador){
+        total.innerText = contador;
+        preco.innerText = contador * 250;
+      }
+      // Ao iniciar a página, chamar a função de atualizar valor para que não inicia vazio.
+      atualizarValores(contador);
+
+
+      // Função para aumentar o contador a cada vez que clicar no botão
+      function handleClick() {
+        // Aumentar o contador
+        contador ++; 
+        // Chamar função para atualizar valores no DOM
+        atualizarValores(contador);
+      }
+      // Evento de click para chamar a função
+      button.addEventListener('click', handleClick)
+    </script>
+  </body>
+</html>

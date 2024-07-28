@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Carregar React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Carregar Babel, transforma o HTML em CreateElement do React -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- Crir uma DIV com id de Root que é onde testaremos os comandos -->
+    <div id="root"></div>
+
+    <!-- Área de Scripts -->
+    <!-- IMPORTANTE: Indicar que o text é do Babel para que seja possível fazer a "tradução" de HTMl para React -->
+    <script type="text/babel">
+
+      // Criar o Elemento React
+      const Compras = () => {
+        // Para criar um elemento que mudará de valor, vamos utilizar os métodos UseState e SetState
+        // para isso usaremos o UseState, sendo que terá 23 variaveis atreladas a ela, uma sendo um contador e o outro a função a ser utilizada
+        const [count, setCount] = React.useState(5);
+
+        // Criar uma função de execução ao clicar em um botão
+        function handleClick() {
+          // A função setCount deverá pegar o valor de Count e somar a 1, para atualizar a variável do "setState" criado anteriormente
+          setCount(count + 1);
+        }
+
+        return <div>
+            <button onClick={handleClick}>Comprar: {count}</button>
+            <p>Total: {count}</p>
+            <p>Preço: {count * 250}</p>
+          </div>
+        ;
+      };
+    </script>
+  </body>
+</html>

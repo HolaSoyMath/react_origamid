@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Carregar React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Carregar Babel, transforma o HTML em CreateElement do React -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- Crir uma DIV com id de Root que é onde testaremos os comandos -->
+    <div id="root"></div>
+
+    <!-- Área de Scripts -->
+    <!-- IMPORTANTE: Indicar que o text é do Babel para que seja possível fazer a "tradução" de HTMl para React -->
+    <script type="text/babel">
+      // Criar um elemento em React de Button
+      const Button = () => {
+        // Retornar um elemento Button com o texto de "Comprar"
+        return <button>Comprar</button>;
+      };
+
+      // Criar um elemento em React de Main Nav
+      const MainNav = () => {
+        // Retornar uma Nav que tem alguns elementos em HTML moldados
+        return (
+          <nav>
+            <ul>
+              <li>
+                <a href="#">Link 1</a>
+              </li>
+              <li>
+                <a href="#">Link 2</a>
+              </li>
+            </ul>
+            <Button />
+          </nav>
+        );
+      };
+      // Como podemos observar no Elemento criado acima, é possivel chamar um elemento criado anteriormente dentro desse novo, basta colocar o nome dele
+
+      const Produtos = () => {
+        // Criar as variaveis dos produtos a serem utilizados
+        const produto1 = "Camisa";
+        const produto2 = "Bermuda";
+
+        // Criar função de Click
+        function handleClick(event) {
+          // Escrever no console o texto escrito no botão do elemento que acionou o evento
+          console.log("Comprou: " + event.target.innerText);
+        }
+
+        // OBSERVAÇÃO, o "onClick" do React é com o C maiúsculo mesmo
+        return (
+          <div>
+            <button onClick={handleClick}>
+              {produto1} - R$ {Math.random() * 100}
+            </button>
+            <button onClick={handleClick}>
+              {produto2} - R$ {Math.random() * 100}
+            </button>
+          </div>
+        );
+      };
+
+
+      const Compras = () => {
+        const [count, setCount] = React.useState(5);
+
+        function handleClick() {
+          setCount(count + 1);
+        }
+
+        return <div>
+            <button onClick={handleClick}>Comprar: {count}</button>
+            <p>Total: {count}</p>
+            <p>Preço: {count * 250}</p>
+          </div>
+        ;
+      };
+
+      // Criação do App principal, que é o que aparecerá na tela
+      const App = () => {
+        return (
+          <div>
+            <h1>Teste</h1>
+            <MainNav />
+            <Produtos />
+            <Compras />
+          </div>
+        );
+      };
+
+      // Indicar o elemento que aparecerá o app
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+      // Indicar que o elemento a ser renderizado é o "App"
+      root.render(<App />);
+    </script>
+  </body>
+</html>

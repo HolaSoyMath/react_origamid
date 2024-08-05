@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Carregar React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Carregar Babel, transforma o HTML em CreateElement do React -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // Criar o elemento do "App"
+      const App = () => {
+        const livros = [
+          { nome: "A Game of Thrones", ano: 1996 },
+          { nome: "A Clash of Kings", ano: 1998 },
+          { nome: "A Storm of Swords", ano: 2000 },
+        ];
+
+        return (
+          <div>
+            <h2>Nome dos livros sem filtro</h2>
+            <ul>
+              {livros.map(({ nome, ano }) => (
+                <li key={nome}>
+                  {nome}, {ano}
+                </li>
+              ))}
+            </ul>
+            <h2>Nome dos livros com filtro</h2>
+            <ul>
+              {livros
+                .filter(({ ano }) => ano >= 1998)
+                .map(({ nome, ano }) => (
+                  <li key={nome}>
+                    {nome}, {ano}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        );
+      };
+
+      // Carregar o React no elemento de ID "app-react"
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>

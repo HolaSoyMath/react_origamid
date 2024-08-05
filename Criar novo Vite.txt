@@ -1,0 +1,55 @@
+Para criar um arquivo Vite precisamos acessar a pasta pelo cmd e executar o comando:
+- npm create vite@latest .
+- npm install
+
+Após a crioação da nova pasta, podemos deixar apenas os arquivos abaixo:
+- node_modules
+- public
+- src
+  - App.jsx
+  - main.jsx
+- index.html
+- package.json
+- package-lock.json
+- vite.config.js
+Caso queira upar apenas os arquivos necessários, manter o GitIgnore
+
+**********
+Código mínimo para o index.html
+**********
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+********** 
+Código mínimo para o main.jsx
+**********
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+**********
+Código mínimo para o App.jsx
+**********
+
+import React from 'react';
+
+const App = () => {
+  return <div>App React</div>;
+};
+
+export default App;

@@ -34,7 +34,7 @@ const GastoExtra = () => {
 
 const App = () => {
   // Informar qual o usuário será utilizado
-  const dados = mario;
+  const dados = luana;
 
   // A partir do Array das compras, separar apenas os valores de cada compra e substituir o "R$ "
   const listaPrecos = dados.compras.map((compra) =>
@@ -65,7 +65,7 @@ const App = () => {
         Total gasto: R$ <span>{totalPreco}</span>
       </p>
       {/* Se o usuário teve um custo maior de 10000 indicar que o mesmo está gastando muito */}
-      {totalPreco >= 10000 ? GastoExtra() : null}
+      {totalPreco > 10000 ? GastoExtra() : null}
     </div>
   );
 };

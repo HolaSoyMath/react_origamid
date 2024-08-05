@@ -12,6 +12,7 @@ Após a crioação da nova pasta, podemos deixar apenas os arquivos abaixo:
 - package.json
 - package-lock.json
 - vite.config.js
+Caso queira upar apenas os arquivos necessários, manter o GitIgnore
 
 **********
 Código mínimo para o index.html

@@ -16,11 +16,15 @@ function App() {
   const [modal, setModal] = React.useState(false);
 
   // Exemplo 3
-  const [items, setItems] = React.useState('Teste');
+  const [contar, setContar] = React.useState(1);
+  const [items, setItems] = React.useState(["Item 1"]);
 
-  function handleClick3(){
-    setItems('Outro');
-  };
+  function handleClick3() {
+    setContar((contar) => {
+      setItems((items) => [...items, "Item " + (contar + 1)]);
+      return contar + 1;
+    });
+  }
 
   return (
     <div>
@@ -60,10 +64,15 @@ function App() {
       <hr />
 
       <section>
-        <h2>Próximo uso</h2>
-        <p className={"explicacao"}>Explicação</p>
-        <p>{items}</p>
-        <button onClick={handleClick3}>Clicar</button>
+        <h2>Funções com Callback</h2>
+        <p className={"explicacao"}>Quando utilizamos uma função dentro de outra função, chamamos isso como callback. <br />
+        Podemos passá-la como parâmetro também se necessario e tambem sera chamada de callback </p>
+        <div>
+          {items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+          <button onClick={handleClick3}>{(contar)}</button>
+        </div>
       </section>
     </div>
   );
